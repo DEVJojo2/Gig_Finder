@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indie Gig Finder</title>
+<style>
+  body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: #121212; 
+    color: #ffffff; 
+    padding: 20px; 
+    text-align: center; 
+  }
+  .container { 
+    max-width: 600px; 
+    margin: 40px auto; 
+    background: #1e1e1e; 
+    padding: 30px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+  }
+  h1 { color: #bb86fc; }
+  p { line-height: 1.5; }
+  input[type="text"] { 
+    width: 80%; 
+    padding: 12px; 
+    margin: 20px 0; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+  }
+  button { 
+    background-color: #bb86fc; 
+    color: #121212; 
+    padding: 12px 24px; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    transition: background-color 0.3s;
+  }
+  button:hover { 
+    background-color: #9c27b0; 
+    color: #ffffff;
+  }
+  .instructions { 
+    margin-top: 20px; 
+    font-size: 14px; 
+    color: #aaaaaa; 
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🎸 Indie Gig Finder</h1>
+  <p>Enter your location (City, State, or Zip Code) to find the top independent venues within a 30-minute radius to book or sign up for.</p>
+  
+  <input type="text" id="locationInput" placeholder="e.g., Indianapolis, IN or 46231">
+  <br>
+  <button onclick="findGigs()">Find Venues</button>
+  
+  <div class="instructions">
+    <p>This tool searches live independent venue databases based on your radius.</p>
+  </div>
+</div>
+
+<script>
+  function findGigs() {
+    var location = document.getElementById('locationInput').value.trim();
+    if (location) {
+      // Redirects user input directly to the venue search database
+      var searchUrl = "https://www.indieonthemove.com/venues?query=" + encodeURIComponent(location);
+      window.open(searchUrl, "_blank");
+    } else {
+      alert("Please enter a valid city or zip code first!");
+    }
+  }
+</script>
+
+</body>
+</html>
